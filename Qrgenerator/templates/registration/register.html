@@ -1,0 +1,38 @@
+{% extends "base.html" %} {% load crispy_forms_tags %} {% load crispy_tailwind
+%} {% block content %}
+<section class="bg-gray-100">
+  <div class="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="lg:col-span-2 lg:py-12">
+        <h1 class="text-6xl font-bold text-gray-900 sm:text-7xl">
+          QR Paper-tech Registrate
+        </h1>
+
+        <p class="max-w-xl text-lg">
+          En esta interfaz podra crear sus Qr de manera llamativa y bonita,
+          comunicate con nosotros si quieres una pagina web crea tu usuario y
+          empieza a disfrutar
+        </p>
+
+        <div class="mt-8">
+          <a href="#" class="text-2xl font-bold text-pink-600"> 04247640567 </a>
+
+          <address class="mt-2 not-italic">Venezuela</address>
+        </div>
+      </div>
+
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+        <form action="#" class="space-y-4" method="POST">
+          {% csrf_token %} {{ form|crispy }}
+          <button
+            class="inline-block rounded bg-indigo-600 px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-indigo-500"
+            type="submit"
+          >
+            Iniciar sesión
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}

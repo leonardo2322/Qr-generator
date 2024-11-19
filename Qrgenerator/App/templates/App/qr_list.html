@@ -1,0 +1,61 @@
+{% extends "base.html" %} {% block content %} 
+  {% if list_qrs %}
+    {% for qr in list_qrs %}
+      <article
+        class="overflow-hidden rounded-lg border border-gray-100 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900 dark:shadow-gray-700/25 max-w-md mx-auto m-10 mb-8 p-10"
+      >
+        <!-- Imagen con tamaño adecuado -->
+        <img
+          src="{{ qr.qr_icono_imagen.url }}"
+          alt="{{ qr.titulo }}"
+          class="w-full h-350 object-cover object-center m-1"
+        />
+
+        <div class="p-4 sm:p-6">
+          <a href="#">
+            <h3 class="text-lg font-medium text-gray-900 dark:text-white">
+              <br />
+              Titulo: {{ qr.titulo }}
+            </h3>
+          </a>
+
+          <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            URL: {{ qr.url }} <br />
+          </p>
+
+          <ul>
+            <li>{{ qr.fecha_actualizado|date }}</li>
+            {% if qr.color_qr is None %}
+              <li>No introduciste color</li>
+            {% else %}
+              <li>Color QR: {{ qr.color_qr }}</li>
+            {% endif %}
+          </ul>
+
+          <a
+            href="{% url 'eliminar' qr.id %}"
+            class="group mt-4 inline-flex items-center gap-1 text-sm font-medium text-red-600"
+          >
+            Eliminar
+            <span
+              aria-hidden="true"
+              class="block transition-all group-hover:ms-0.5 rtl:rotate-180"
+            >&rarr;</span>
+          </a>
+        </div>
+      </article>
+    {% endfor %}
+  {% else %}
+    <div class="flex flex-col items-center justify-center my-10">
+      <img
+        src="/static/images/img-not-found.png"
+        alt="No hay datos"
+        class="w-64 h-64 object-contain"
+      />
+      <p class="mt-4 text-lg text-gray-500 dark:text-gray-400">
+        No tienes datos para mostrar. Presiona el boton de crear y crea tus QRs.
+      </p>
+    </div>
+  {% endif %}
+{% endblock content %}
+
