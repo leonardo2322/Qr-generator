@@ -30,31 +30,49 @@ Antes de ejecutar este proyecto, asegúrate de tener instalado lo siguiente:
 
 ## **Instalación y Ejecución**
 
-#### 1. **Crea un entorno virtual **
+#### 1.**Clona este repositorio**
 
+```bash o windows
+git clone https://github.com/leonardo2322/Qr-generator.git
+cd Qrgenerator
+
+```
+
+#### 2. **Crea un entorno virtual **
+
+```terminal
 - python -m venv env
 - source env/bin/activate # En Windows: env\Scripts\activate
+```
 
-#### **con el entorno activo ejecuta en la terminal**
+#### 3. **con el entorno activo ejecuta en la terminal**
 
+```terminal shell o bash
 - pip install -r requirements.txt
+```
 
-#### **con el entorno activo ejecuta en la terminal cd .\Qrgenerator**
+#### 4. **con el entorno activo ejecuta en la terminal cd .\Qrgenerator**
 
 - python manage.py migrate
 
-#### **Clona este repositorio**
+#### 5. **Ejecuta el servidor local**
 
-```bash o windows
-git clone https://github.com/tu-usuario/qr-generator.git
-cd qr-generator
+```terminal shell o bash
+python manage.py runserver
+```
 
+### **Con docker**
 
-### Personalización
-1. Cambia `https://github.com/tu-usuario/django-qr-generator.git` por el enlace real de tu repositorio.
-2. Si tienes capturas de pantalla, guárdalas en `static/images/` y ajusta las rutas en las secciones correspondientes.
-3. Modifica el contacto con tus datos personales.
+```terminal o shell
+ejecuta este comando
 
+- docker build -t paper23/qr_generator:latest .
+ esto creara la imagen
 
+ y luego carga el container  qr-generator-container  este nombre lo puedes colocar como tu quieras
+
+- docker run -d -p 8000:8000 --name qr-generator-container paper23/qr_generator:latest
+
+y ya puedes acceder a localhost/8000/app/ y tendras la app funcionando
 
 ```
